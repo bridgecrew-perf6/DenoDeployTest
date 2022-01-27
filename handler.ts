@@ -26,6 +26,9 @@ export const handler = (req: Request): Response => {
       if (room) {
         room.pc = ws;
         console.log(`pc connected ${room.id}`);
+      } else {
+        ws.send('room id not match');
+        ws.close();
       }
       return;
     }
